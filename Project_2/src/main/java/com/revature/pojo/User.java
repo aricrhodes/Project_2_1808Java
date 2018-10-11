@@ -1,13 +1,30 @@
 package com.revature.pojo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="USER_TABLE")
 public class User {
 	
+	@Id
+	@Column(name="USER_ID")
+	@SequenceGenerator(name="USER_ID_SEQ", sequenceName="USER_ID_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_ID_SEQ")
 	private int id;
 	
+	@Column(name="USERNAME")
 	private String username;
 	
+	@Column(name="PASS_WORD")
 	private String password;
 	
+	@Column(name="IS_ADMIN")
 	private boolean admin;
 
 	public int getId() {

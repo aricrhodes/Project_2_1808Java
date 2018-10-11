@@ -10,10 +10,10 @@
             org.postgresql.Driver
         </property>
         <property name="hibernate.connection.url">
-            jdbc:postgresql://rev1808java-nick-db2.cjteoptiiwyx.ca-central-1.rds.amazonaws.com:5432/postgres1808?
+            jdbc:postgresql://awszxanderdb.cs7rjxsvenhy.us-east-1.rds.amazonaws.com:5432/FirstDB?
         </property>
         <property name="hibernate.connection.username">
-            njurczak
+            rootZx
         </property>
         <property name="hibernate.connection.password">
             Revature
@@ -21,10 +21,8 @@
         
         <property name="hibernate.show_sql">true</property>
         
-       <!--   <mapping class="com.revature.entities.HoneyPot"/> 
-        <mapping resource="honeypot.hbm.xml"/>
-        <mapping class="com.revature.entities.Bear"/>
-        <mapping class="com.revature.entities.Cave"/> -->
+        <!-- <mapping resource="user.hbm.xml"/>-->
+        <mapping class="com.revature.pojo.User"/>
         
     </session-factory>
 </hibernate-configuration>
