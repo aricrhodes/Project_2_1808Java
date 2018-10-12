@@ -13,12 +13,14 @@ public class UserService {
 	UserDAO udao = new UserDAO();
 	
 	Session sess = SessionUtil.getSession();
-	
-	public void newUser(String username, String password, Boolean role) {
-		udao.newUser(username, password, role);
+	public User getUserById(int id)
+	{
+		return udao.getUserById(id);
+	}
+	public void newUser(User u) {
+		udao.newUser(u);
 	}
 	public User getUser(String username) {
-		System.out.println("inside of Service " + username);
 		return udao.getUser(username);
 	}
 	public List<User> getAllUsers() {

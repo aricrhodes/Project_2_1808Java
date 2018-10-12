@@ -17,14 +17,12 @@ public class UserDAO implements UserCRUD {
 
 	/*---------------------------------------
 	 * Method to make add new user in the 
-	 * DataBase (not sure)
+	 * DataBase (Works)
 	 * -------------------------------------*/
-	public void newUser(String username, String password, Boolean role) {
-		User u = new User();
-		u.setUsername(username);
-		u.setPassword(password);
-		u.setAdmin(role);
-		sess.saveOrUpdate(u);
+	public void newUser(User u) {
+		User save =u;
+		//sess.persist(u);
+		sess.save(save);
 	}
 	/*---------------------------------------
 	 * Method to get a user object from the database 
@@ -38,10 +36,8 @@ public class UserDAO implements UserCRUD {
 	 * Method to get object from the Database
 	 * using the username (Works)
 	 * -------------------------------------*/
-	@SuppressWarnings("deprecation")
 	public User getUser(String username) {
 		
-		//Criteria filter = sess.createCriteria(User.class);
 		String hql = "FROM User AS U WHERE U.username = :name";
 		Query query = sess.createQuery(hql);
 		query.setParameter("name", username);
@@ -62,15 +58,10 @@ public class UserDAO implements UserCRUD {
 	}
 	/*---------------------------------------
 	 * Method to add in a user to the Database
-	 * (not sure)
+	 * (works)
 	 * -------------------------------------*/
 	public void updateUser(User user) {
-		User u = new User();
-		u.setId(user.getId());
-		u.setUsername(user.getUsername());
-		u.setPassword(user.getPassword());
-		u.setAdmin(user.isAdmin());
-		
+		User u = user;		
 		sess.saveOrUpdate(u);
 	}
 	/*---------------------------------------
@@ -79,14 +70,15 @@ public class UserDAO implements UserCRUD {
 	 * -------------------------------------*/
 	public void deleteUser(String username) {
 		User input = getUser(username);
-		int id = input.getId();
-		User result = (User) sess.createCriteria(User.class)
-				.add(Restrictions.idEq(id));
+		/*System.out.println(input.getId());
+		sess.remove(input);*/
 		
-		if (result != null) {
-			sess.delete(result);
-		}
+		/*Query q = sess.createQuery("delete User where id = '"+sess.load(User.class, input.getId())+"' CASCADE");
+		q.executeUpdate();*/
 
+		User ent = sess.load(User.class, input.getId());
+		System.out.println(ent);
+		sess.delete(sess.load(User.class, input.getId()));
 	}
 
 }

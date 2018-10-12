@@ -22,9 +22,14 @@ public class Driver {
 		
 		UserService us = new UserService();			//Connection to the services that connect to the DAO
 
-
+		/*User ex = new User(1,"TrueAdmin", "blah01", true);
+		us.newUser(ex);*/
+		
+		/*User me=sess.get(User.class, 2);
+		me.setAdmin(true);
+		us.updateUser(me);*/
+		us.deleteUser("TrueAdmin");
         System.out.println(us.getAllUsers());		//shows a list of all users in the database
-        System.out.println(us.getUser("Aric"));//find the user by name
 
 
 	}

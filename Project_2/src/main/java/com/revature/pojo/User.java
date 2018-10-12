@@ -11,11 +11,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="USER_TABLE")
 public class User {
-	
+	/*-----------------------------------
+	 * Variables
+	 * 
+	 * ---------------------------------*/
 	@Id
 	@Column(name="USER_ID")
-	@SequenceGenerator(name="USER_ID_SEQ", sequenceName="USER_ID_SEQ")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_ID_SEQ")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="USERNAME")
@@ -26,7 +28,11 @@ public class User {
 	
 	@Column(name="IS_ADMIN")
 	private boolean admin;
-
+	
+	/*-------------------------------------
+	 * GETTERS AND SETTERS
+	 * 
+	 * ----------------------------------*/
 	public int getId() {
 		return id;
 	}
@@ -58,7 +64,10 @@ public class User {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-
+	/*------------------------------------------
+	 * Constructors
+	 * 
+	 * ----------------------------------------*/
 	public User(int id, String username, String password, boolean admin) {
 		super();
 		this.id = id;
@@ -71,7 +80,18 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public User(String username, String password, boolean admin) {
+		// TODO Auto-generated constructor stub
+		this.username = username;
+		this.password = password;
+		this.admin = admin;
+	}
 
+	/*-------------------------------------
+	 * To String method
+	 * 
+	 * -----------------------------------*/
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", admin=" + admin + "]";

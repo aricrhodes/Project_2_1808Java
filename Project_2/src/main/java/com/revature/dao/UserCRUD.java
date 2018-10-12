@@ -7,10 +7,11 @@ import com.revature.pojo.User;
 public interface UserCRUD {
 	
 	//Create
-	public void newUser(String username, String password, Boolean role);
+	public void newUser(User u);
 	
 	//Read
 	public User getUser(String username);
+	//ReadAll
 	public List<User> getAllUsers();
 	
 	//Update
@@ -18,5 +19,7 @@ public interface UserCRUD {
 	
 	//Delete
 	public void deleteUser(String username);
+	
+	
 
 }
