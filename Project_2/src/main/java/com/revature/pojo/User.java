@@ -81,12 +81,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public User(String username, String password, boolean admin) {
-		// TODO Auto-generated constructor stub
-		this.username = username;
-		this.password = password;
-		this.admin = admin;
-	}
+	
 
 	/*-------------------------------------
 	 * To String method
