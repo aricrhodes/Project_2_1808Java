@@ -64,7 +64,9 @@ public class UserDAO implements UserCRUD {
 	 * (works)
 	 * -------------------------------------*/
 	public void updateUser(User user) {
-		User u = user;
+		User u = getUser(user.getUsername());
+		u.setPassword(user.getPassword());
+		u.setAdmin(user.isAdmin());
 		sess.saveOrUpdate(u);
 	}
 
