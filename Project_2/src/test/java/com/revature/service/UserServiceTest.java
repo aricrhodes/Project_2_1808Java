@@ -34,6 +34,8 @@ public class UserServiceTest {
 	private static List<User> userList;
 	
 	private static User u;
+	private static User u2;
+	private static User u3;
 	
 
 	@BeforeClass
@@ -51,11 +53,16 @@ public class UserServiceTest {
 	public void setUp() throws Exception {
 		
 		u = new User(1, "david" , "dpass" , true);
-		userList.addAll(Stream.of(
-				u,
-				new User(2, "natali" , "best" , false),
-				new User(3 , "john" , "yellow", true)
-				).collect(Collectors.toList()));
+		u2 = new User(2, "natali", "best", false);
+		u3 = new User(3, "john", "yellow", true);
+		
+		uD.newUser(u);
+		uD.newUser(u2);
+		uD.newUser(u3);
+		
+		userList.add(u);
+		userList.add(u2);
+		userList.add(u3);
 	}
 
 	@After
@@ -65,13 +72,11 @@ public class UserServiceTest {
 
 	@Test
 	public void testMakingUser() {
-		uS.getUser(u.getUsername());
-		verify(uD).updateUser(u);
-		
+		verify(uD).newUser(u);		
 	}
 	@Test
 	public void testGettingAllUsers() {
-		assertEquals("should give you full list of users", userList,uS.getAllUsers());
+		assertEquals("should give you full list of users", userList, uS.getAllUsers());
 	}
 
 }

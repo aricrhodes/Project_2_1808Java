@@ -2,12 +2,17 @@ package com.revature.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
+import org.springframework.stereotype.Service;
 
 import com.revature.dao.UserDAO;
 import com.revature.pojo.User;
 import com.revature.util.SessionUtil;
 
+@Service
+@Transactional
 public class UserService {
 	
 	UserDAO udao = new UserDAO();
