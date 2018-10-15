@@ -14,25 +14,25 @@ public class AuthService {
 	@Autowired
 	UserService us;
 	
+	UserService userS = new UserService();
+	
 	public User validate(User user){
 	    
 		
-		User authUser = null;
+		User authUser;
+		String userName = user.getUsername();
 		
 		log.info("Username passed into validate: " + user.getUsername());
 		log.info("Password passed into validate: " + user.getPassword());
 		
-		authUser=us.getUser(user.getUsername());
-		if((authUser != null)&& authUser.getPassword()== user.getPassword()){
-			authUser = user;
-			authUser.setId(1);
-		}else {
-			authUser=null;
+		authUser=userS.getUser(userName);
+		if(authUser != null ){ 
+			if(authUser.getPassword().equals(user.getPassword())){
+				return authUser;
+			}
 		}
-		
-		
-		
-		return authUser;
+	
+		return null;
 		
 	}
 

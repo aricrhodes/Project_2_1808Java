@@ -43,9 +43,9 @@ public class UserDAO implements UserCRUD {
 		Query query = sess.createQuery(hql);
 		query.setParameter("name", username);
 
-		List<User> user = (List<User>) query.list();
+		User user =  (User) query.getSingleResult();
 
-		return user.get(0);
+		return (User) user;
 	}
 
 	/*---------------------------------------
