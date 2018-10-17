@@ -3,6 +3,8 @@ package com.revature.pojo;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,6 +13,12 @@ public class Vehicle {
 	@Id
 	@Column(name = "VEHICLE_ID")
 	private int vehicleId;
+	
+	@ManyToOne
+	@JoinColumn(name="USER_ID")
+	private int userId;
+
+	
 
 	@Column(name = "VIN")
 	private String vin;
@@ -35,6 +43,14 @@ public class Vehicle {
 
 	@Column(name = "INFO")
 	private String info;
+	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 	public int getVehicleId() {
 		return vehicleId;
@@ -108,10 +124,11 @@ public class Vehicle {
 		this.info = info;
 	}
 
-	public Vehicle(int vehicleId, String vin, String body, String color, int year, String make, double price,
+	public Vehicle(int vehicleId, int userId,String vin, String body, String color, int year, String make, double price,
 			double fuel, String info) {
 		super();
 		this.vehicleId = vehicleId;
+		this.userId=userId;
 		this.vin = vin;
 		this.body = body;
 		this.color = color;
@@ -129,8 +146,11 @@ public class Vehicle {
 
 	@Override
 	public String toString() {
-		return "Vehicle [vehicleId=" + vehicleId + ", vin=" + vin + ", body=" + body + ", color=" + color + ", year="
-				+ year + ", make=" + make + ", price=" + price + ", fuel=" + fuel + ", info=" + info + "]";
+		return "Vehicle [vehicleId=" + vehicleId + ", userId=" + userId + ", vin=" + vin + ", body=" + body + ", color="
+				+ color + ", year=" + year + ", make=" + make + ", price=" + price + ", fuel=" + fuel + ", info=" + info
+				+ "]";
 	}
+
+	
 
 }
