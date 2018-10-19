@@ -18,29 +18,27 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.revature.dao.UserDAO;
 import com.revature.dao.VehicleDAO;
-import com.revature.pojo.User;
 import com.revature.pojo.Vehicle;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserServiceTest {
-    
-	
+public class VehicleServiceTest {
 	@Mock
-	UserDAO udao;
+	VehicleDAO vedao;
 	
 	@InjectMocks
-	UserService userv;
+	VehicleService veserv;
 	
-	private static User u;
+	private static Vehicle ve;
 	
-    private static List<User> userList;
+    private static List<Vehicle> vehList;
+    
+    
     
     
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		userList = new ArrayList<User>();
+		vehList = new ArrayList<Vehicle>();
 	}
 
 	@AfterClass
@@ -49,46 +47,47 @@ public class UserServiceTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.u = new  User(1, "john", "pass", false);
-		this.userList.addAll(Arrays.asList(new User[] {this.u, new User()}));
-		when(udao.getAllUsers()).thenReturn(this.userList);
-		when(udao.getUser("john")).thenReturn(this.u);
+		this.ve = new Vehicle(1,2,"BMW-15","4-door", "gray", 2010, "Toyota", 120000.00, 30.0, "new stereo");
+		this.vehList.addAll(Arrays.asList(new Vehicle[] {this.ve,new Vehicle()}));
+		when(vedao.getAllVehicles()).thenReturn(this.vehList);
+		when(vedao.getVehicle(1)).thenReturn(this.ve);
 	}
 
 	@After
 	public void tearDown() throws Exception {
+	   vehList.clear();
 	}
 
 	@Test
 	public void testGetAllVehicle() {
-		assertEquals("should get whole list of user", this.userList, this.userv.getAllUsers());
+		assertEquals("should get whole list of vehicle", this.vehList, this.veserv.getAllVehicles());
 	
 	}
 	
 	@Test
 	public void testGetVehicle() {
-		assertEquals("should get one  user", this.u, this.userv.getUser("john"));
+		assertEquals("should get one  vehicle", this.ve, this.veserv.getVehicle(1));
 	
 	}
 
 	@Test
-	public void testMakeUser() {
-		userv.newUser(this.u);
-		verify(udao).newUser(u);
+	public void testMakeVehicle() {
+		veserv.newVehicle(this.ve);
+		verify(vedao).newVehicle(ve);
 	
 	}
 	
 	@Test
-	public void testUpdateUser() {
-		userv.updateUser(this.u);
-		verify(udao).updateUser(u);
+	public void testUpdateVehicle() {
+		veserv.update(this.ve);
+		verify(vedao).update(ve);
 	
 	}
 	
 	@Test
-	public void testDeleteUser() {
-		userv.deleteUser(u.getUsername());
-		verify(udao).deleteUser("john");
+	public void testDeleteVehicle() {
+		veserv.delete(this.ve);
+		verify(vedao).delete(ve);
 	
 	}
 

@@ -18,11 +18,11 @@ public class VehicleTest {
 	public static void tearDownAfterClass() throws Exception {
 	}
 
-	Vehicle ve = new Vehicle(1, "BMW-15", "4-door", "gray", 2010, "Toyota", 120000.00, 30.0, "new stereo");
+	Vehicle ve = new Vehicle(1, 2,"BMW-15", "4-door", "gray", 2010, "Toyota", 120000.00, 30.0, "new stereo");
 
 	@Before
 	public void setUp() throws Exception {
-		Vehicle ve = new Vehicle(1, "BMW-15", "4-door", "gray", 2010, "Toyota", 120000.00, 30.0, "new stereo");
+		Vehicle ve = new Vehicle(1,2, "BMW-15", "4-door", "gray", 2010, "Toyota", 120000.00, 30.0, "new stereo");
 	}
 
 	@After
