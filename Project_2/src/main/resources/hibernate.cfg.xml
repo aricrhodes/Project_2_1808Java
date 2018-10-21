@@ -10,13 +10,14 @@
             org.postgresql.Driver
         </property>
         <property name="hibernate.connection.url">
-            jdbc:postgresql://awszxanderdb.cs7rjxsvenhy.us-east-1.rds.amazonaws.com:5432/FirstDB?
+            jdbc:postgresql://revaturebitadb.ceji3tsumxwv.us-east-2.rds.amazonaws.com:5432/rev1808bitadb?
+            
         </property>
         <property name="hibernate.connection.username">
-            rootZx
+            bita
         </property>
         <property name="hibernate.connection.password">
-            Revature
+           revature
         </property>
         
         <property name="hibernate.show_sql">true</property>
