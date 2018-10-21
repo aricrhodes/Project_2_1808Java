@@ -2,6 +2,9 @@ package com.revature.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -10,12 +13,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "VEHICLE_TABLE")
 public class Vehicle {
+	
 	@Id
 	@Column(name = "VEHICLE_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int vehicleId;
 	
-	@ManyToOne
-	@JoinColumn(name="USER_ID")
+	
+	@Column(name="USER_ID")
 	private int userId;
 
 	

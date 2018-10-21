@@ -24,6 +24,6 @@
         
         <!-- <mapping resource="user.hbm.xml"/>-->
         <mapping class="com.revature.pojo.User"/>
-        
+         <mapping class="com.revature.pojo.Vehicle"/>
     </session-factory>
 </hibernate-configuration>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.revature.pojo.User;
 import com.revature.pojo.Vehicle;
 import com.revature.util.SessionUtil;
 
@@ -31,8 +32,10 @@ public class VehicleDAO implements VehicleCRUD{
 
 	@Override
 	public List<Vehicle> getAllVehicles() {
-		List<Vehicle> listVe = sess.createQuery("from VEHICLE_TABLE").list();
+		
+		List<Vehicle> listVe = (List<Vehicle>) sess.createQuery("from Vehicle").list();
 		return listVe;
+		
 	}
 
 	@Override
